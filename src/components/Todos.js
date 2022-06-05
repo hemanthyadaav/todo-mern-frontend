@@ -58,7 +58,7 @@ export default function Todos({ todos, listItems, setListItems }) {
 			<Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
 				<ModalHeader toggle={closeModal}>Update Todo</ModalHeader>
 				<ModalBody>
-					<Form onSubmit={(e) => updateItem(e)}>
+					<Form onSubmit={updateItem}>
 						<FormGroup>
 							<Input
 								type='text'
@@ -69,7 +69,9 @@ export default function Todos({ todos, listItems, setListItems }) {
 					</Form>
 				</ModalBody>
 				<ModalFooter>
-					<Button color='primary'>Update</Button>
+					<Button color='primary' onClick={updateItem}>
+						Update
+					</Button>
 					<Button onClick={closeModal}>Cancel</Button>
 				</ModalFooter>
 			</Modal>
