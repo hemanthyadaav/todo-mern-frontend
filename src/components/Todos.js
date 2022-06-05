@@ -72,7 +72,9 @@ export default function Todos({ todos, listItems, setListItems }) {
 					<Button color='primary' onClick={updateItem}>
 						Update
 					</Button>
-					<Button onClick={closeModal}>Cancel</Button>
+					<Button onClick={closeModal} color='danger'>
+						Cancel
+					</Button>
 				</ModalFooter>
 			</Modal>
 			<ListGroup numbered>
@@ -81,6 +83,7 @@ export default function Todos({ todos, listItems, setListItems }) {
 						{todo.item}
 						<Button
 							style={{ float: "right" }}
+							color='primary'
 							className='mx-2'
 							onClick={() => openModal(todo)}
 						>

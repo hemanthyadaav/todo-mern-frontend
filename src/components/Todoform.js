@@ -5,14 +5,14 @@ import Axios from "axios";
 
 export default function Todoform() {
 	const [itemText, setItemText] = useState("");
-	const [listItems, setListItems] = React.useState([]);
+	const [listItems, setListItems] = useState([]);
 
+	let count = 0;
 	useEffect(() => {
 		const getItemList = async () => {
 			try {
 				const res = await Axios.get("http://localhost:8500/api/items");
 				setListItems(res.data);
-				// console.log(listItems)
 			} catch (err) {
 				console.log(err);
 			}
@@ -30,7 +30,7 @@ export default function Todoform() {
 				item: itemText,
 			});
 			setListItems((prev) => [...prev, res.data]);
-			console.log(res);
+			// console.log(res.data);
 			setItemText("");
 		} catch (err) {
 			console.log(err);
@@ -39,7 +39,7 @@ export default function Todoform() {
 
 	return (
 		<div className='container'>
-			<h1 className='mt-5'>Todo Application</h1>
+			<h1 className='mt-5 text-center'>Todo Application</h1>
 			<Form onSubmit={(e) => addItem(e)}>
 				<FormGroup>
 					<InputGroup className='mt-4'>
@@ -51,7 +51,9 @@ export default function Todoform() {
 							value={itemText}
 							onChange={(e) => setItemText(e.target.value)}
 						/>
-						<Button onClick={addItem}>Add Todo</Button>
+						<Button onClick={addItem} color='success'>
+							Add Todo
+						</Button>
 					</InputGroup>
 				</FormGroup>
 			</Form>
